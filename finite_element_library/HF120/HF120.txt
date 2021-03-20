@@ -1,0 +1,4 @@
+3-D High-Frequency Brick Solid
+
+HF120 is a high-frequency brick element which models 3-D electromagnetic fields and waves governed by the full set of Maxwell's equations in linear media.
+It is based on a full-wave formulation of Maxwell's equations in terms of the time-harmonic electric field E (exponent jωt dependence assumed).
