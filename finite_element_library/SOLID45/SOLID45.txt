@@ -1,0 +1,4 @@
+3-D Structural Solid
+
+SOLID45 is used for the 3-D modeling of solid structures. 
+The element is defined by eight nodes having three degrees of freedom at each node: translations in the nodal x, y, and z directions.
