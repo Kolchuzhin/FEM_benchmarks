@@ -1,0 +1,147 @@
+!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx!
+!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx!
+!
+! Filename: SOLID45element.mac, ANSYS APDL script
+! by <vladimir.kolchuzhin@ieee.org>
+!
+! Issue: export SOLID45 element matrix: [24 x 24] --> file
+!
+! Rev.: 15:01 2019-02-22
+!
+!==========================================================================!
+!
+!      	            z    
+!       P  o-------------------------o O
+!         /         ^               /|
+!        /          |    y         / |
+!       /           |   /         /  | 
+!    M o-------------------------o N |
+!      |            | /          |   |
+!      | L o        |/           |   o K
+!      |            *------------|--/-->  x
+!      |                         | /
+!      |                         |/
+!    I o-------------------------o J
+!                  
+!
+!                   ASCII-Schematic of the problem
+!
+! Nodes I, J, K, L, M, N, O, P
+!
+!==========================================================================!
+!
+! SOLID45 is used for the 3-D modeling of solid structures. 
+! The element is defined by eight nodes having three degrees of freedom at each node: 
+! translations in the nodal x, y, and z directions.
+! 8 nodes x 3 dof (ux,uy,uz)
+!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx!
+!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx!
+FINISH $/CLEAR $/CONTOUR,1,128
+/VUP,,Z
+
+
+/TITLE, SOLID45element
+
+project_name='SOLID45 element'
+!--------------------------------------------------------------------------!
+/PREP7
+
+Lx=1.0
+Ly=2.0
+Lz=3.0
+!-------------------------! geometry parametrs !---------------------------!
+! 
+
+x1=-Lx/2 	$y1=-Ly/2 	$z1=-Lz/2
+x2=+Lx/2 	$y2=-Ly/2 	$z2=-Lz/2
+x3=+Lx/2 	$y3=+Ly/2 	$z3=-Lz/2
+x4=-Lx/2 	$y4=+Ly/2 	$z4=-Lz/2
+x5=-Lx/2 	$y5=-Ly/2 	$z5=+Lz/2
+x6=+Lx/2 	$y6=-Ly/2 	$z6=+Lz/2
+x7=+Lx/2 	$y7=+Ly/2 	$z7=+Lz/2
+x8=-Lx/2 	$y8=+Ly/2 	$z8=+Lz/2
+
+!--------------------------------------------------------------------------!
+!----------------------! Defines elements types !--------------------------!
+!--------------------------------------------------------------------------!
+
+ET,1,SOLID45,1                    ! suppress extra displacement shapes
+
+!--------------------------------------------------------------------------!
+!-------------------! Defines material properties !------------------------!
+!--------------------------------------------------------------------------!
+
+material properties of <110> Si:
+MP,EX,  1,169e9		! Young's modulus, Pa
+MP,NUXY,1,0.066		! Poisson's ratio
+MP,DENS,1,2329		! density, kg/m3
+
+
+ALPHAD,1e-3	! mass matrix multiplier for damping
+BETAD, 1e-3	! stiffness matrix multiplier for damping
+
+! One form of the viscous damping matrix: [C] = α[M] + β[K]
+! where [M] is the mass matrix and [K] is the stiffness matrix
+! α is the mass matrix multiplier
+! β is the stiffness matrix multiplier
+!--------------------------------------------------------------------------!
+!------------------------------! FEA Domain !------------------------------!
+!--------------------------------------------------------------------------!
+
+MAT,1
+TYPE,1
+
+!--------------------------------------------------------------------------!
+
+N,1,x1,y1,z1
+N,2,x2,y2,z2
+N,3,x3,y3,z3
+N,4,x4,y4,z4
+N,5,x5,y5,z5
+N,6,x6,y6,z6
+N,7,x7,y7,z7
+N,8,x8,y8,z8
+
+! define an elment through nodes
+E,1,2,3,4,5,6,7,8
+
+!--------------------------------------------------------------------------!
+!--------------------! Defines components for BCs !------------------------!
+!--------------------------------------------------------------------------!
+
+ !D,1,all,0.0
+ !F,5,FZ,1.0
+
+eplot
+
+!==========================================================================!
+
+!save,project_name,db,,all
+
+!==========================================================================!
+/SOLU
+
+!ANTYPE,STATIC
+
+ANTYPE,MODAL			! modal analysis
+num_mode=10			! total number of modes
+MODOPT,DAMP,num_mode
+ !mxpand,num_mode
+
+SOLVE
+WRFULL,1
+FINISH
+!==========================================================================!
+/AUX2
+
+ !Writes an assembled global matrix in Harwell-Boeing format
+ !HBMAT, Fname, Ext, --, Form, Matrx, Rhs, Mapping
+	! Rhs is the right-hand side vector
+
+file,file,full
+
+HBMAT,SOLID45element_stiff,dat,,ASCII,STIFF,NO,YES	! for all types of analyses that write a .FULL file
+
+HBMAT,SOLID45element_damp,dat,,ASCII,DAMP,NO,YES	! only valid for damped modal analyses
+HBMAT,SOLID45element_mass,dat,,ASCII,MASS,NO,YES	! for buckling, substructure, and modal analyses
+!==========================================================================!
