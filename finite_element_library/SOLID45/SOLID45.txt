@@ -1,4 +1,39 @@
-3-D Structural Solid
-
 SOLID45 is used for the 3-D modeling of solid structures. 
-The element is defined by eight nodes having three degrees of freedom at each node: translations in the nodal x, y, and z directions.
+
+      	           z    
+       P  o-------------------------o O
+         /         ^               /|
+        /          |    y         / |
+       /           |   /         /  | 
+    M o-------------------------o N |
+      |            | /          |   |
+      | L o        |/           |   o K
+      |            *------------|--/-->  x
+      |                         | /
+      |                         |/
+    I o-------------------------o J
+                  
+
+   ASCII-Schematic of the 3-D Structural Solid Element SOLID45
+
+The element is defined by eight nodes (I, J, K, L, M, N, O, P) having three degrees of freedom (translations in the nodal x, y, and z directions) at each node: 
+
+  8 nodes x 3 dof (ux,uy,uz) == {u1 ... u24}
+  
+===============================================================================================================
+SOLID45element.mac output:
+  * SOLID45element_stiff.dat
+  * SOLID45element_stiff.mapping
+  
+  * SOLID45element_mass.dat
+  * SOLID45element_mass.mapping
+  
+  * SOLID45element_damp.dat
+  * SOLID45element_damp.mapping
+  
+The viscous damping matrix: [C] = α[M] + β[K],
+where 
+[M] is the mass matrix and [K] is the stiffness matrix
+α is the mass matrix multiplier
+β is the stiffness matrix multiplier
+  ===============================================================================================================
