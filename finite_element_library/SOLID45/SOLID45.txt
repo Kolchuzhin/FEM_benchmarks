@@ -22,18 +22,27 @@ The element is defined by eight nodes (I, J, K, L, M, N, O, P) having three degr
   
 ===============================================================================================================
 SOLID45element.mac output:
-  * SOLID45element_stiff.dat
+
+  * SOLID45element_stiff.dat        Stiffness matrix from ANSYS FULL file dumped into Harwell-Boeing format
   * SOLID45element_stiff.mapping
   
-  * SOLID45element_mass.dat
+  * SOLID45element_mass.dat         Mass matrix from ANSYS FULL file dumped into Harwell-Boeing format 
   * SOLID45element_mass.mapping
   
-  * SOLID45element_damp.dat
+  * SOLID45element_damp.dat         Damping matrix from ANSYS FULL file dumped into Harwell-Boeing format
   * SOLID45element_damp.mapping
-  
+------------------------------------------------------
 The viscous damping matrix: [C] = α[M] + β[K],
 where 
 [M] is the mass matrix and [K] is the stiffness matrix
 α is the mass matrix multiplier
 β is the stiffness matrix multiplier
-  ===============================================================================================================
+------------------------------------------------------
+material properties of <110> Si:
+MP,EX,  1,169e9		! Young's modulus, Pa
+MP,NUXY,1,0.066		! Poisson's ratio
+MP,DENS,1,2329		! density, kg/m3
+
+===============================================================================================================
+
+===============================================================================================================
