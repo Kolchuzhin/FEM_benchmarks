@@ -28,12 +28,11 @@ Basic Parameters of layers:
 ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_radius_of_%20holes.gif)
 ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_shape_of_%20holes.gif)
 
-## cross section
-![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/beam_cross_section.gif)
-
-## comb cell
-![comb](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/comb_cell_position.gif)
-
 ## bitter coil
 ![coil](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/Bitter_coil_height.gif)
 ![coil](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/Bitter_coil_radius.gif)
+
+| component                              |                    |
+|:---------------------------------------|:------------------:|
+| comb                                   | ![comb](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/comb_cell_position.gif)   | 
+| beam                                   | ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/beam_cross_section.gif)   | 
