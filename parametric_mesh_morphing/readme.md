@@ -19,8 +19,10 @@ Basic Parameters of layers:
 * Number of layers: 5
 * Additional outer layers: 0
 * Last aspect: 0.80
-
 ![conductor with Boundary Layer Mesh](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/conductor_with_Boundary_Layer_Mesh.png)
+
+## micromirror
+![micromirror](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/micromirror_shape.gif)
 
 ## double clamped perforated beam
 ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_radius_of_%20holes.gif)
