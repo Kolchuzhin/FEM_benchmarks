@@ -36,10 +36,10 @@ Basic Parameters of layers:
 
 
 ## double clamped perforated beam
-| parameter          |                    |
-|:-------------------|:------------------:|
-| height             | ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_radius_of_%20holes.gif)  | 
-| radius             | ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_shape_of_%20holes.gif)   | 
+| parameter       |                    |
+|:----------------|:------------------:|
+| radius          | ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_radius_of_%20holes.gif)  | 
+| shape           | ![beam](https://github.com/Kolchuzhin/FEM_benchmarks/blob/main/parametric_mesh_morphing/double-clamped_perforated_beam_shape_of_%20holes.gif)   | 
 
 
 ## bitter coil
