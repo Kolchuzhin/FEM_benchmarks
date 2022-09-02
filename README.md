@@ -21,4 +21,4 @@
 [Various scripts for ANSYS Mechanical APDL](https://github.com/Kolchuzhin/APDL_scripts)
 
 ## parametric_mesh_morphing
-Various examples of mesh morphing application
+[Various examples of mesh morphing application](https://github.com/Kolchuzhin/FEM_benchmarks/tree/main/parametric_mesh_morphing)
